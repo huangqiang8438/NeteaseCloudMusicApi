@@ -22,13 +22,10 @@ const app = express()
 // CORS
 app.use((req, res, next) => {
     if(req.path !== '/' && !req.path.includes('.')){
-        res.header({
-            'Access-Control-Allow-Credentials': true,
-            'Access-Control-Allow-Origin': req.headers.origin || '*',
-            'Access-Control-Allow-Headers': 'X-Requested-With',
-            'Access-Control-Allow-Methods': 'PUT,POST,GET,DELETE,OPTIONS',
-            'Content-Type': 'application/json; charset=utf-8'
-        })
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+        res.header('Access-Control-Allow-Methods', '*');
+        res.header('Content-Type', 'application/json;charset=utf-8');
     }
     next()
 })
